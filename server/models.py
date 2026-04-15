@@ -40,34 +40,3 @@ class User(db.Model):
 
     def __repr__(self):
         return f"<User id={self.id} username='{self.username}'>"
-
-
-# NOTE MODEL
-
-class Note(db.Model):
-    __tablename__ = "notes"
-
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable=False)
-    content = db.Column(db.Text, nullable=False)
-    created_at = db.Column(db.DateTime, server_default=db.func.now())
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    user = db.relationship("User", back_populates="notes")
-
-    # Validations 
-    @validates("title")
-    def validate_title(self, key, value):
-        if not value or not value.strip():
-            raise ValueError("Title cannot be blank.")
-        if len(value) > 100:
-            raise ValueError("Title must be 100 characters or fewer.")
-        return value.strip()
-
-    @validates("content")
-    def validate_content(self, key, value):
-        if not value or not value.strip():
-            raise ValueError("Content cannot be blank.")
-        return value.strip()
-
-    def __repr__(self):
-        return f"<Note id={self.id} title='{self.title}' user_id={self.user_id}>"
