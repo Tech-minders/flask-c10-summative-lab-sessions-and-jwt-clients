@@ -102,7 +102,7 @@ def login():
 def logout():
 
     session.clear()  # removes all session data including user_id
-    return make_json_response({}, 204)
+    return make_response('', 204)
 
 
 @app.route("/check_session", methods=["GET"])
