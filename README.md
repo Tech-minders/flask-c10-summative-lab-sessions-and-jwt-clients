@@ -38,14 +38,7 @@ pipenv shell
 cd server
 ```
 
-### 4. Initialize and migrate the database
-```bash
-flask db init
-flask db migrate -m "initial migration"
-flask db upgrade head
-```
-
-### 5. Seed the database with sample data
+### 4. Seed the database with sample data
 ```bash
 python seed.py
 ```
