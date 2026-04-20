@@ -7,7 +7,7 @@ from schemas import user_schema, note_schema, notes_schema
 
 app = Flask(__name__)
 
-app.config["SECRET_KEY"] = b"gasfjksaodhejjjmxkak"
+app.config["SECRET_KEY"] = "gasfjksaodhejjjmxkak"
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///app.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
